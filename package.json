@@ -1,0 +1,25 @@
+{
+  "name": "express-api-webshop-js-sporesong",
+  "version": "1.0.0",
+  "description": "En lösningsarkitekt har redan dokumenterat vilka endpoints som skall finnas för API’et samt skrivit ett test flöde med REST-Client som ni kan börja utveckal med. Dvs vilka endpoints och vad de skall heta samt vad de förväntas returnera är redan förutbestämt.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/plugga-tech/express-api-webshop-js-Sporesong.git"
+  },
+  "author": "Suvi Sivula",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/plugga-tech/express-api-webshop-js-Sporesong/issues"
+  },
+  "homepage": "https://github.com/plugga-tech/express-api-webshop-js-Sporesong#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
