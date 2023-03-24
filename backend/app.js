@@ -5,6 +5,8 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var productsRouter = require('./routes/products');
+var ordersRouter = require('./routes/orders');
 
 var app = express();
 
@@ -16,6 +18,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/products', productsRouter);
+app.use('/orders', ordersRouter);
 
 //visa produkter
 app.get("/products/:productId", function(request, response) {
@@ -34,8 +38,19 @@ app.get("/login", function(request, response) {
     response.send(printLoginForm); 
 });
 
+//spara namnet och välkomna användare
 app.post("/saveUser", function(request, response) {
     response.send("Välkommen " + request.body.userName);
+});
+
+//spara användare som jsonobjekt
+app.get("/json", function(request, response) {
+/*     let users = ;
+    response.json(users); */
+});
+
+app.get("/test", function(request, response) {
+    response.sendFile("public/test.html", {root: __dirname});
 });
 
 module.exports = app;
