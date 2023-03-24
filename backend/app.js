@@ -21,36 +21,67 @@ app.use('/users', usersRouter);
 app.use('/products', productsRouter);
 app.use('/orders', ordersRouter);
 
-//visa produkter
-app.get("/products/:productId", function(request, response) {
-    let showProduct = request.params.productId
-    response.send("productsRouter running " + "visa produkt med Id " + showProduct)
+//se alla användare
+app.get("/users", function(request, response) {
+response.send(users);
 });
 
-app.get("/products/:category/:productId", function(request, response) {
-    response.send("visar produkter i kategorin " + request.params.category + " med produktId " + request.params.productId)
+//se specifik användare
+app.get("/users/:id", function(request, response) {
+    let showUser = request.params.userId
+    response.send("usersRouter running " + "visa användare med Id " + showUser)
 });
 
 //logga in användare
-app.get("/login", function(request, response) {
+app.get("/users/login", function(request, response) {
     let printLoginForm = `<h1>Logga in användare</h1><form action="saveUser" method="post">Användarnamn<br>
     <input type="text" name="userName"><button>logga in</button></form>`;
     response.send(printLoginForm); 
 });
 
-//spara namnet och välkomna användare
+/*spara namnet och välkomna användare
 app.post("/saveUser", function(request, response) {
     response.send("Välkommen " + request.body.userName);
-});
+});*/
 
-//spara användare som jsonobjekt
-app.get("/json", function(request, response) {
+//lägg till och spara användare som jsonobjekt
+app.get("/users/add/:json", function(request, response) {
 /*     let users = ;
     response.json(users); */
 });
 
-app.get("/test", function(request, response) {
-    response.sendFile("public/test.html", {root: __dirname});
+//visa alla produkter
+app.get("/products", function(request, response) {
+    response.send(products);
+    });
+
+//visa specifika produkter
+app.get("/products/:productId", function(request, response) {
+    let showProduct = request.params.productId
+    response.send("productsRouter running " + "visa produkt med Id " + showProduct)
 });
+
+//skapa och lägg till produkt som jsonobjekt
+app.get("/products/add/:json", function(request, response) {
+    /*     let products = ;
+        response.json(products); */
+    });
+
+//skapa order
+app.get("/orders/add", function(request, response) {
+    
+    }); 
+    
+//visa alla ordrar
+app.get("/orders", function(request, response) {
+    response.send(orders);
+    });    
+
+/* app.get("/products/:category/:productId", function(request, response) {
+    response.send("visar produkter i kategorin " + request.params.category + " med produktId " + request.params.productId)
+}); */
+
+
+
 
 module.exports = app;
