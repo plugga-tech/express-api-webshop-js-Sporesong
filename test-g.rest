@@ -4,7 +4,7 @@
 
 // HÄMTA ALLA USERS // SKICKA INTE MED LÖSENORD // BARA ID, NAMN + EMAIL PÅ ALLA USERS
 # @name getUsers
-GET http://localhost:3000/api/users
+GET http://localhost:3000/users
 
 ###
 
@@ -19,7 +19,7 @@ Content-Type: application/json
 ###
 
 // SKAPA USER
-POST http://localhost:3000/api/users/add
+POST http://localhost:3000/users/add
 Content-Type: application/json
 
 {
@@ -48,7 +48,7 @@ Content-Type: application/json
 // HÄMTA ALLA PRODUKTER
 
 # @name getProducts
-GET http://localhost:3000/api/products
+GET http://localhost:3000/products
 
 ###
 
@@ -58,7 +58,7 @@ GET http://localhost:3000/api/products/ // ID PÅ PRODUKT
 ###
 
 // SKAPA PRODUKT
-POST http://localhost:3000/api/products/add
+POST http://localhost:3000/products/add
 Content-Type: application/json
 
 {

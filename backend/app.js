@@ -7,8 +7,33 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
 var ordersRouter = require('./routes/orders');
-
 var app = express();
+
+//const { MongoClient } = require('mongodb');
+const mongoose = require("mongoose");
+async function init () {
+    try {
+        const options = {useNewUrlParser: true, useUnifiedTopology: true};
+        await mongoose.connect("mongodb://127.0.0.1:27017/Suvi-sivula", options);
+        console.log("Uppkoppling mot databasen fungerar!");
+    }
+ catch(error) {
+ console.error(error);
+ }
+}
+
+init(); 
+
+
+//const mongoClient = require("mongodb").mongoClient;
+
+/* MongoClient.connect("mongodb://127.0.0.1:27017", { 
+    useUnifiedTopology: true}).then( client => {
+        console.log("Uppkoppling mot databasen fungerar!");
+        const database = client.db("Suvi-Sivula");
+        app.locals.db = database;
+    }); */
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -56,7 +81,7 @@ app.get("/products", function(request, response) {
     });
 
 //visa specifika produkter
-app.get("/products/:productId", function(request, response) {
+app.get("/products/:id", function(request, response) {
     let showProduct = request.params.productId
     response.send("productsRouter running " + "visa produkt med Id " + showProduct)
 });
