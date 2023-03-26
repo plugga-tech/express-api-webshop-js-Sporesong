@@ -9,11 +9,11 @@ GET http://localhost:3000/users
 ###
 
 // HÄMTA SPECIFIK USER // SKICKA HELA OBJEKTET
-POST http://localhost:3000/api/users/
+GET http://localhost:3000/users/:id
 Content-Type: application/json
 
 {
-  "id": "// EN USER ID"
+  "_id": "64208e0e636975414fa1161c"
 }
 
 ###
@@ -23,15 +23,15 @@ POST http://localhost:3000/users/add
 Content-Type: application/json
 
 {
-  "name": "Test Testsson",
-  "email": "test@mail.com",
+  "name": "Mimmi",
+  "email": "mimmi@mail.com",
   "password": "test"
 }
 
 ###
 
 // LOGGA IN USER
-POST http://localhost:3000/api/users/login
+POST http://localhost:3000/users/login
 Content-Type: application/json
 
 {
@@ -53,7 +53,12 @@ GET http://localhost:3000/products
 ###
 
 // HÄMTA SPECIFIK PRODUKT
-GET http://localhost:3000/api/products/ // ID PÅ PRODUKT
+GET http://localhost:3000/products/:id 
+Content-Type: application/json
+
+{
+  "_id":"6420af4a212d1cd7ce437bb0"
+}
 
 ###
 
@@ -75,7 +80,7 @@ Content-Type: application/json
 //
 
 // SKAPA ORDER FÖR EN SPECIFIK USER // PRODUCTS ÄR EN ARRAY MOTSVARANDE INNEHÅLLET I KUNDVAGN
-POST http://localhost:3000/api/orders/add
+POST http://localhost:3000/orders/add
 Content-Type: application/json
 
 {
@@ -96,6 +101,6 @@ Content-Type: application/json
 
 
 // HÄMTA ALLA ORDERS
-GET http://localhost:3000/api/orders/all/
+GET http://localhost:3000/orders/all/
 
 ###

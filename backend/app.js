@@ -14,7 +14,7 @@ const mongoose = require("mongoose");
 async function init () {
     try {
         const options = {useNewUrlParser: true, useUnifiedTopology: true};
-        await mongoose.connect("mongodb://127.0.0.1:27017/Suvi-sivula", options);
+        await mongoose.connect("mongodb://127.0.0.1:27017/Suvi-Sivula", options);
         console.log("Uppkoppling mot databasen fungerar!");
     }
  catch(error) {
