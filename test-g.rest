@@ -9,11 +9,11 @@ GET http://localhost:3000/api/users
 ###
 
 // HÄMTA SPECIFIK USER // SKICKA HELA OBJEKTET
-GET http://localhost:3000/api/users/:id
+POST http://localhost:3000/api/users
 Content-Type: application/json
 
 {
-  "_id": "64208e0e636975414fa1161c"
+  "id": "64208e0e636975414fa1161c"
 }
 
 ###
@@ -35,8 +35,8 @@ POST http://localhost:3000/api/users/login
 Content-Type: application/json
 
 {
-  "email": "// EN USER EMAIL",
-  "password": "// EN USER EMAIL"
+  "email": "mimmi@mail.com",
+  "password": "test"
 }
 
 ###

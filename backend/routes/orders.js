@@ -9,7 +9,12 @@ router.get('/all',async function(request, response) {
 
 router.post("/add", async function(request, response) {
     const order = await OrderModel.create(request.body);
+    const products = order.products;
+    products.forEach(async (product) => {
+        await ProductModel.updateOne({name: request.body.name}, {$set: {lager: - quantity}});  
+    });
     response.status(201).json(order);
 });
+
 
   module.exports = router;
