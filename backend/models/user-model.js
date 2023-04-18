@@ -9,4 +9,8 @@ const UserSchema = mongoose.Schema({
         required: true}
 });
 
+UserSchema.methods.comparePassword =  function (loginPassword) {
+    return this.password === loginPassword;
+};
+
 module.exports = mongoose.model("user", UserSchema);

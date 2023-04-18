@@ -1,5 +1,7 @@
 var express = require('express');
 const OrderModel = require('../models/order-model');
+const UserModel = require("../models/user-model");
+const ProductModel = require("../models/product-model");
 var router = express.Router();
 
 router.get('/all',async function(request, response) {
@@ -7,14 +9,27 @@ router.get('/all',async function(request, response) {
    response.status(200).json(orders);
   });
 
-router.post("/add", async function(request, response) {
-    const order = await OrderModel.create(request.body);
-    const products = order.products;
-    products.forEach(async (product) => {
-        await ProductModel.updateOne({name: request.body.name}, {$set: {lager: - quantity}});  
-    });
-    response.status(201).json(order);
+router.post("/add", async function(request,response) {
+  const {orderNumber, productId, quantity, userId} = request.body;
+  const user = await UserModel.findOne({_id: userId});
+  const orderedProducts = [];
+  for (let i = 0; i < orderedProducts.length; i++) {
+    const product = await ProductModel.findById(orderedProducts[i]);
+    if (!product) {
+      return response.status(400).send(`Product was not found`);
+    }
+    orderedProducts.push(product._id);
+  }
+  const order = new OrderModel({
+    orderNumber: orderNumber,
+    products: orderedProducts,
+    quantity: quantity,
+    user: user
+  });
+  
+  await order.save();
+  response.send(order);
 });
-
-
-  module.exports = router;
+  
+  
+module.exports = router;

@@ -7,16 +7,16 @@ const products = await ProductModel.find();
 response.status(200).json(products);
   });
 
-router.get("/:id",async function(request,response) {
-const {_id} = request.body;
-const product = await ProductModel.findById({_id});
-response.send(product);
+router.get("/:id", async function(request,response) {
+  const {_id} = request.params;
+  const product = await ProductModel.findById(_id);
+  response.send(product);
 });  
 
-  router.post("/add", async function(request, response) {
-    const product = new ProductModel(request.body);
-    await product.save();
-    response.status(201).json(product);
-  });
+router.post("/add", async function(request, response) {
+  const product = new ProductModel(request.body);
+  await product.save();
+  response.status(201).json(product);
+});
   
   module.exports = router;

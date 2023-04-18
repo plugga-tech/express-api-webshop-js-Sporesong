@@ -3,7 +3,6 @@
 //
 
 // HÄMTA ALLA USERS // SKICKA INTE MED LÖSENORD // BARA ID, NAMN + EMAIL PÅ ALLA USERS
-# @name getUsers
 GET http://localhost:3000/api/users
 
 ###
@@ -23,8 +22,8 @@ POST http://localhost:3000/api/users/add
 Content-Type: application/json
 
 {
-  "name": "Mimmi",
-  "email": "mimmi@mail.com",
+  "name": "Otto",
+  "email": "otto@mail.com",
   "password": "test"
 }
 
@@ -47,17 +46,16 @@ Content-Type: application/json
 
 // HÄMTA ALLA PRODUKTER
 
-# @name getProducts
 GET http://localhost:3000/api/products
 
 ###
 
 // HÄMTA SPECIFIK PRODUKT
-GET http://localhost:3000/api/api/products/:id 
+GET http://localhost:3000/api/products/:id 
 Content-Type: application/json
 
 {
-  "_id":"6420af4a212d1cd7ce437bb0"
+  "_id":"643eedf02b9101b1feca3e4e"
 }
 
 ###
@@ -67,10 +65,10 @@ POST http://localhost:3000/api/products/add
 Content-Type: application/json
 
 {
-  "name": "Produkt 1",
-  "description": "Beskrivning av produkt 1",
-  "price": 100, 
-  "lager": 10
+  "name": "Produkt 2",
+  "description": "Beskrivning av produkt 2",
+  "price": 140, 
+  "lager": 30
 }
 
 ###
@@ -84,23 +82,11 @@ POST http://localhost:3000/api/orders/add
 Content-Type: application/json
 
 {
-
   "orderNumber": 6374,
-  "products": ["642090ccb85783fbde44e479"],
+  "products": ["64209124b85783fbde44e47a", "643eedf02b9101b1feca3e4e"],
   "quantity": 2,
-  "user": ["641dfd90af11920a280ca100"]
+  "user": "641dfd90af11920a280ca100"
   
- // "user": "{{getUsers.response.body.$[0].id}}",
-     // "products": [
-    //{
-    //  "productId": "// ID PÅ EN PRODUKT",
-      //"quantity": 1
-    //},
-    //{
-      //"productId": "// ID PÅ EN PRODUKT",
-      //"quantity": 2
-    //}
-  //]
 }
 
 ###

@@ -17,14 +17,21 @@ router.post("/",async function(request,response) {
 });
 
 router.post("/add", async function(request, response) {
-  const user = new userModel(request.body);
+  const user = new UserModel(request.body);
   await user.save();
   response.status(201).json(user);
 });
 
 router.post("/login", async function(request, response) {
-  const {email} = request.body;
+  const {email, password} = request.body;
   const loggedInUser = await UserModel.findOne({email: email});
+  if(!loggedInUser) {
+    return response.status(404).send({message: "Cannot find the user."});
+  }
+  const validPassword = await loggedInUser.comparePassword(password);
+  if(!validPassword) {
+    return response.status(401).send({message: "The password is incorrect, please check your password"})
+  }
   response.send(loggedInUser);
 });
 
