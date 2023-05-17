@@ -82,11 +82,17 @@ POST http://localhost:3000/api/orders/add
 Content-Type: application/json
 
 {
-  "orderNumber": 6374,
-  "products": ["64209124b85783fbde44e47a", "643eedf02b9101b1feca3e4e"],
-  "quantity": 2,
-  "user": "641dfd90af11920a280ca100"
-  
+"user": "643ee145f9e8d4ec7ad48703",
+"products": [
+{
+"productId": "64209124b85783fbde44e47a", "quantity": 1
+}, {
+
+"productId": "643eedf02b9101b1feca3e4e", "quantity": 2
+}
+
+]
+
 }
 
 ###
